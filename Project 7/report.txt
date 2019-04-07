@@ -1,0 +1,114 @@
+Miko Farin (704789591)
+CS 31
+
+Project 7 Report
+
+1. Overall, I did not have too much trouble with the project, however the problems I did have are knowing the relationships of classes and how to use there for other methods within the project. Using the functions from other classes, and then using it for other functions was hard, however, it was clear once you read the relationships between the classes carefully. That is where I encountered the most problems, this project was similar to project 5.
+
+2. Test Cases:
+
+1. 
+int main()
+	{
+            using namespace std;
+            using namespace cs31;
+
+           NumberSet ns( 1, 2, 3, 4, 5, 6, 7, 8 );
+
+
+            assert( ns.notFound( 0 ) );
+            assert( !ns.notFound( 1 ) );
+            assert( !ns.notFound( 2 ) );
+            assert( !ns.notFound( 3 ) );
+            assert( !ns.notFound( 4 ) );
+            assert( !ns.notFound( 5 ) );
+            assert( !ns.notFound( 6 ) );
+            assert( !ns.notFound( 7 ) );
+            assert( !ns.notFound( 8 ) );
+            assert( ns.notFound( 9 ) );
+           Cell c;
+ c.setValue(1);
+            assert( c.getValue() == 1 );
+            assert( !c.isImmutable() );
+            c.setValue(2);
+            c.setImmutable( true );
+            assert( c.getValue() == 2 );
+            assert( c.isImmutable() );
+           // isValueOK does not check immutability
+            assert( c.isValueOK( 0, ns, ns, ns ) )
+   assert( !c.isValueOK( 1, ns, ns, ns ) );
+            assert( !c.isValueOK( 2, ns, ns, ns ) );
+            assert( !c.isValueOK( 3, ns, ns, ns ) );
+            assert( !c.isValueOK( 4, ns, ns, ns ) );
+            assert( !c.isValueOK( 5, ns, ns, ns ) );
+            assert( !c.isValueOK( 6, ns, ns, ns ) );
+            assert( !c.isValueOK( 7, ns, ns, ns ) );
+            assert( !c.isValueOK( 8, ns, ns, ns ) );
+            assert( c.isValueOK( 9, ns, ns, ns ) );
+
+            // isOKToSetValue does check immutability
+            assert( !c.isOKToSetValue( 0, ns, ns, ns ) );
+            assert( !c.isOKToSetValue( 1, ns, ns, ns ) );
+            assert( !c.isOKToSetValue( 2, ns, ns, ns ) );
+            assert( !c.isOKToSetValue( 3, ns, ns, ns ) );
+            assert( !c.isOKToSetValue( 4, ns, ns, ns ) );
+            assert( !c.isOKToSetValue( 5, ns, ns, ns ) );
+            assert( !c.isOKToSetValue( 6, ns, ns, ns ) );
+            assert( !c.isOKToSetValue( 7, ns, ns, ns ) );
+            assert( !c.isOKToSetValue( 8, ns, ns, ns ) );
+            assert( !c.isOKToSetValue( 9, ns, ns, ns ) );
+           
+	    Game g;
+            g.cheat("123456789|.........|987321456|456987123|.........|312645978|.........|.........|........." );
+ 	    assert( g.display() == "123|456|789\n...|...|...\n987|321|456\n-----------\n456|987|123\n...|...|...\n312|645|978\n-----------\n...|...|...\n...|...|...\n...|...|...\n");
+            assert( g.evaluate() == 36 );
+            assert( !g.completed() );
+            
+	    // all the cheated values are immutable
+            assert( !g.acceptValue(0, 1, 1) );
+            assert( !g.acceptValue(7, 1, 1) );
+            assert( g.display() == "123|456|789\n...|...|...\n987|321|456\n-----------\n456|987|123\n...|...|...\n312|645|978\n-----------\n...|...|...\n...|...|...\n...|...|...\n");
+            assert( g.evaluate() == 36 );
+            assert( !g.completed() );
+            cout << "all tests passed!" << endl;
+            return 0;
+      } 
+
+Check a not completed code
+
+2.  Game g1;
+            g1.cheat("5364678912|672195348|198342567|859761423|426853791|713924856|961537284|287419635|345286179" );
+            assert( g1.evaluate() == 100 );
+            assert( g1.completed() );
+            
+	    // all the cheated values are immutable
+            assert( g1.acceptValue(0, 1, 1) );
+            assert( g1.acceptValue(7, 1, 1) );
+            assert( g1.evaluate() == 100);
+            assert( g1.completed() );
+            cout << "all tests passed!" << endl;
+            return 0;
+      } 
+
+To check a correctly evaluated board.
+
+other test cases I tried worked as I used the game and fiddled with the code. I was able to sucessfully build and others I would purposely create boards that were not correctly one. Some test cases
+code such as cheat (“123......|114......|511……|………|………|………|………|………|………”) this should return a 4. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
